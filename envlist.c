@@ -44,7 +44,7 @@ t_env	*ft_envnew(char const *name, char const *data)
 	else
 	{
 		new_elem->name = ft_strdup(name);
-		new_elem->data = ft_strdup(data);		
+		new_elem->data = ft_strdup(data);
 		if (!new_elem->name || !new_elem->data)
 			return (NULL);
 	}
