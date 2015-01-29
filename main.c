@@ -41,7 +41,8 @@
 
 static void	ft_execute(char *path, char **argv)
 {
-	pid_t	father;
+	pid_t		father;
+	extern char **environ;
 
 	if (*path)
 	{
@@ -53,7 +54,7 @@ static void	ft_execute(char *path, char **argv)
 		}
 		if (father == 0)
 		{
-			execve(path, argv, NULL);
+			execve(path, argv, environ);
 			ft_putstr_fd("command not found: ", 2);
 			ft_putendl_fd(path, 2);
 			exit(1);
