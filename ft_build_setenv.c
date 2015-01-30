@@ -12,6 +12,8 @@
 
 #include "sh1.h"
 
+#include <stdio.h>
+
 static int	ft_correct_set_env(char **argv)
 {
 	int		i;
@@ -66,7 +68,7 @@ void		ft_build_setenv(t_env *list, char **argv)
 			find = 0;
 			while (tmp)
 			{
-				if (ft_strcmp(ft_strsub(argv[i], 0
+				if (tmp->name && ft_strcmp(ft_strsub(argv[i], 0
 					, ft_find_char(argv[i], '=')), tmp->name) == 0)
 					find = ft_build_setenv_update(tmp, argv[i]);
 				tmp = tmp->next;

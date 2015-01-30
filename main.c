@@ -55,13 +55,14 @@ int			main(void)
 	cmd = NULL;
 	list = NULL;
 	ft_init_env(&list);
+	//ft_print_env(list);
 	while (1)
 	{
 		ft_putstr("$> ");
 		ft_read_input(&cmd);
 		if (ft_strcmp(cmd, "exit") == 0)
 			return (0);
-		ft_search_and_execute(cmd, list);
+		ft_search_and_execute(cmd, &list);
 	}
 	return (0);
 }

@@ -12,7 +12,7 @@
 
 #include "sh1.h"
 
-static void	ft_print_env(t_env *list)
+void	ft_print_env(t_env *list)
 {
 	t_env *tmp;
 
@@ -30,12 +30,12 @@ static void	ft_print_env(t_env *list)
 	}
 }
 
-void		ft_build_env(t_env *list, char *cmd, char **argv)
+void		ft_build_env(t_env **list, char *cmd, char **argv)
 {
 	if (ft_strcmp(cmd, "env") == 0)
-		ft_print_env(list);
+		ft_print_env(*list);
 	else if (ft_strcmp(cmd, "setenv") == 0)
-		ft_build_setenv(list, argv);
+		ft_build_setenv(*list, argv);
 	else
 		ft_build_unsetenv(list, argv);
 }

@@ -13,34 +13,29 @@
 #include "sh1.h"
 #include <stdlib.h>
 
-void	ft_build_unsetenv(t_env *list, char **argv)
+void	ft_build_unsetenv(t_env **list, char **argv)
 {
-	int		i;
-	t_env	*tmp;
-	t_env	*pred;
+	t_env	*currP;
+	t_env	*prevP;
+	int 	i;
 
-	tmp = list;
-	pred = tmp;
 	i = 0;
+	prevP = NULL;
+	currP = *list;
 	while (argv[i])
 		i++;
-	if (i == 2)
+	while (i == 2 && currP != NULL)
 	{
-		while (tmp)
+		if (ft_strcmp(currP->name,argv[1]) == 0)
 		{
-			if (ft_strcmp(tmp->name, argv[1]) == 0)
-			{
-				pred->next = tmp->next;
-				free(tmp->name);
-				free(tmp->data);
-				tmp->name = NULL;
-				tmp->data = NULL;
-				free(tmp);
-				tmp = pred;
-				return ;
-			}
-			pred = tmp;
-			tmp = tmp->next;
+			if (prevP == NULL)
+				*list = currP->next;
+			else
+				prevP->next = currP->next;
+			free(currP);
+			return;
 		}
+		prevP = currP;
+		currP = currP->next;
 	}
 }

@@ -64,20 +64,20 @@ static char	*ft_find_path(char *cmd, char *path)
 	return (cmd);
 }
 
-void		ft_search_and_execute(char *cmd, t_env *list)
+void		ft_search_and_execute(char *cmd, t_env **list)
 {
 	char	**argv;
 	char	*path;
 	t_env	*tmp;
 
-	tmp = list;
+	tmp = *list;
 	path = NULL;
 	argv = ft_parse_commande(&cmd);
 	if (tmp)
 	{
 		if (ft_strcmp(cmd, "env") == 0 || ft_strcmp(cmd, "setenv") == 0
 			|| ft_strcmp(cmd, "unsetenv") == 0)
-			ft_build_env(tmp, cmd, argv);
+			ft_build_env(list, cmd, argv);
 		// else if (ft_strcmp(cmd, "cd") == 0)
 		// 	ft_build_cd(cmd, argv);
 		else
