@@ -31,5 +31,6 @@ void				ft_build_setenv(t_env *list, char **argv);
 void				ft_build_unsetenv(t_env **list, char **argv);
 void				ft_build_env(t_env **list, char *cmd, char **argv);
 void				ft_build_cd(char **argv, t_env **list);
+char				*ft_getenv(t_env **list, const char *name);
 
 #endif

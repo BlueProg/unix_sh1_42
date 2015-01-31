@@ -40,7 +40,7 @@ static void	ft_fix_pwd(t_env **list, char *path)
 	}
 }
 
-static char	*ft_getenv(t_env **list, const char *name)
+char	*ft_getenv(t_env **list, const char *name)
 {
 	t_env	*tmp;
 

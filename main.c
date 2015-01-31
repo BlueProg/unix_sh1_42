@@ -15,10 +15,17 @@
 
 static void	ft_read_input(char **cmd)
 {
-	if (get_next_line(0, cmd) < 0)
+	int		ret;
+
+	if ((ret = get_next_line(0, cmd)) < 0)
 	{
 		ft_putendl_fd("Error read", 2);
 		exit(-1);
+	}
+	else if (ret == 0)
+	{
+		ft_putendl_fd("exit", 1);
+		exit(0);
 	}
 }
 
@@ -51,17 +58,26 @@ int			main(void)
 {
 	char	*cmd;
 	t_env	*list;
+	char	**multi;
 
 	cmd = NULL;
 	list = NULL;
 	ft_init_env(&list);
 	while (1)
 	{
-		ft_putstr("$> ");
+		ft_putstr("\033[33m");
+		ft_putstr(ft_getenv(&list, "PWD"));
+		ft_putstr(": ");
+		ft_putstr("\033[0m");
 		ft_read_input(&cmd);
 		if (ft_strcmp(cmd, "exit") == 0)
 			return (0);
-		ft_search_and_execute(cmd, &list);
+		multi = ft_strsplit(cmd, ';');
+		while (*multi)
+		{
+			ft_search_and_execute(*multi, &list);
+			multi++;
+		}
 	}
 	return (0);
 }
