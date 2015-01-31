@@ -20,6 +20,7 @@ void	ft_build_unsetenv(t_env **list, char **argv)
 	int		i;
 
 	i = 0;
+	prev = NULL;
 	curr = *list;
 	while (argv[i])
 		i++;
@@ -37,4 +38,5 @@ void	ft_build_unsetenv(t_env **list, char **argv)
 		prev = curr;
 		curr = curr->next;
 	}
+	ft_putendl_fd("Path env not found",2);
 }

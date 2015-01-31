@@ -98,6 +98,10 @@ void		ft_build_cd(char **argv, t_env **list)
 			path = ft_strdup(argv[1]);
 	}
 	chdir(path);
+	if (access(path, F_OK) == -1)
+		ft_putendl_fd("Path not exist", 2);
+	else if (access(path, X_OK) == -1)
+		ft_putendl_fd("Permission denied", 2);
 	path = ft_strdup(getcwd(buff, 256));
 	ft_fix_pwd(list, path);
 }
