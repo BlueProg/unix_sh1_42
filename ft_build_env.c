@@ -19,12 +19,14 @@ void	ft_print_env(t_env *list)
 	tmp = list;
 	while (tmp)
 	{
-		if (tmp->name && tmp->data && (ft_strlen(tmp->name) > 0)
-			&& (ft_strlen(tmp->data) > 0))
+		if (tmp->name && tmp->data && (ft_strlen(tmp->name) > 0))
 		{
 			ft_putstr(tmp->name);
 			ft_putstr("=");
-			ft_putendl(tmp->data);
+			if (ft_strlen(tmp->data) > 0)
+				ft_putendl(tmp->data);
+			else
+				ft_putendl("");
 		}
 		tmp = tmp->next;
 	}

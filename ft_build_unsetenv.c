@@ -20,13 +20,12 @@ void	ft_build_unsetenv(t_env **list, char **argv)
 	int		i;
 
 	i = 0;
-	prev = NULL;
 	curr = *list;
 	while (argv[i])
 		i++;
 	while (i == 2 && curr != NULL)
 	{
-		if (ft_strcmp(curr->name, argv[1]) == 0)
+		if (curr->name && ft_strcmp(curr->name, argv[1]) == 0)
 		{
 			if (prev == NULL)
 				*list = curr->next;
