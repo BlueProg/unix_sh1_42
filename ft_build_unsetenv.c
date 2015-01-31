@@ -6,7 +6,7 @@
 /*   By: mmole <mmole@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/29 22:01:33 by mmole             #+#    #+#             */
-/*   Updated: 2015/01/29 22:01:34 by mmole            ###   ########.fr       */
+/*   Updated: 2015/01/31 01:14:27 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,28 @@
 
 void	ft_build_unsetenv(t_env **list, char **argv)
 {
-	t_env	*currP;
-	t_env	*prevP;
-	int 	i;
+	t_env	*curr;
+	t_env	*prev;
+	int		i;
 
 	i = 0;
-	prevP = NULL;
-	currP = *list;
+	prev = NULL;
+	curr = *list;
 	while (argv[i])
 		i++;
-	while (i == 2 && currP != NULL)
+	while (i == 2 && curr != NULL)
 	{
-		if (ft_strcmp(currP->name,argv[1]) == 0)
+		if (ft_strcmp(curr->name, argv[1]) == 0)
 		{
 			if (prevP == NULL)
-				*list = currP->next;
+				*list = curr->next;
 			else
-				prevP->next = currP->next;
-			free(currP);
-			return;
+				prev->next = curr->next;
+			free(curr);
+			return ;
 		}
-		prevP = currP;
-		currP = currP->next;
+		prev = curr;
+		curr = curr->next;
 	}
 }
+

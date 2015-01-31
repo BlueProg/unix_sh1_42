@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 SRC		=		main.c envlist.c ft_build_env.c ft_build_setenv.c \
-				ft_build_unsetenv.c ft_execute.c ft_core.c
+				ft_build_unsetenv.c ft_execute.c ft_core.c ft_build_cd.c
 			
 OBJ		=		$(SRC:.c=.o)
 

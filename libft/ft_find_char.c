@@ -6,11 +6,11 @@
 /*   By: mmole <mmole@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 16:52:38 by mmole             #+#    #+#             */
-/*   Updated: 2015/01/28 16:52:43 by mmole            ###   ########.fr       */
+/*   Updated: 2015/01/31 01:11:16 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int 	ft_find_char(char const *s1, char c)
+int		ft_find_char(char const *s1, char c)
 {
 	int	i;
 

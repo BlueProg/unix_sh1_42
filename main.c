@@ -55,7 +55,6 @@ int			main(void)
 	cmd = NULL;
 	list = NULL;
 	ft_init_env(&list);
-	//ft_print_env(list);
 	while (1)
 	{
 		ft_putstr("$> ");

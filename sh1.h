@@ -6,16 +6,16 @@
 /*   By: mmole <mmole@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 16:52:38 by mmole             #+#    #+#             */
-/*   Updated: 2015/01/28 16:52:43 by mmole            ###   ########.fr       */
+/*   Updated: 2015/01/31 01:13:54 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	SH1_H
+#ifndef SH1_H
 # define SH1_H
 
-#include "libft/includes/libft.h"
+# include "libft/includes/libft.h"
 
-typedef struct 		s_env
+typedef struct		s_env
 {
 	char			*name;
 	char			*data;
@@ -30,5 +30,6 @@ void				ft_search_and_execute(char *cmd, t_env **list);
 void				ft_build_setenv(t_env *list, char **argv);
 void				ft_build_unsetenv(t_env **list, char **argv);
 void				ft_build_env(t_env **list, char *cmd, char **argv);
+void				ft_build_cd(char **argv, t_env **list);
 
 #endif

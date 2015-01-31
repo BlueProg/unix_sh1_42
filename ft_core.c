@@ -78,8 +78,8 @@ void		ft_search_and_execute(char *cmd, t_env **list)
 		if (ft_strcmp(cmd, "env") == 0 || ft_strcmp(cmd, "setenv") == 0
 			|| ft_strcmp(cmd, "unsetenv") == 0)
 			ft_build_env(list, cmd, argv);
-		// else if (ft_strcmp(cmd, "cd") == 0)
-		// 	ft_build_cd(cmd, argv);
+		else if (ft_strcmp(cmd, "cd") == 0)
+			ft_build_cd(argv, list);
 		else
 		{
 			while (tmp)
