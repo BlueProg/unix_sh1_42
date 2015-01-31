@@ -88,7 +88,7 @@ void		ft_search_and_execute(char *cmd, t_env **list)
 					path = ft_find_path(cmd, tmp->data);
 				tmp = tmp->next;
 			}
-			ft_execute(path, argv);
+			ft_execute(path, argv, list);
 		}
 	}
 }

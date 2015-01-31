@@ -32,11 +32,40 @@ static int		ft_only_space(char *path)
 	return (0);
 }
 
-void			ft_execute(char *path, char **argv)
+static char		**ft_create_environ(t_env **list, int i)
+{
+	t_env	*tmp;
+	char	**tab;
+
+	tmp = *list;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	tmp = *list;
+	if ((tab = (char **)malloc(sizeof(char *) * (i + 1))) == NULL)
+		return (NULL);
+	i = 0;
+	while (tmp)
+	{
+		if (tmp->name && tmp->data)
+		{
+			tab[i++] = ft_strjoin(ft_strdup(tmp->name), "=");
+			tab[i] = ft_strjoin(tab[i], ft_strdup(tmp->data));
+		}
+		tmp = tmp->next;
+	}
+	tab[i] = NULL;
+	return (tab);
+}
+
+void			ft_execute(char *path, char **argv, t_env **list)
 {
 	pid_t		father;
-	extern char	**environ;
+	int			i;
 
+	i = 0;
 	if (path == NULL)
 		ft_putendl_fd("Command not found", 2);
 	if (path && *path && ft_only_space(path))
@@ -49,8 +78,8 @@ void			ft_execute(char *path, char **argv)
 		}
 		if (father == 0)
 		{
-			execve(path, argv, environ);
-			ft_putstr_fd("command not found: ", 2);
+			execve(path, argv, ft_create_environ(list, i));
+			ft_putstr_fd("Command not found: ", 2);
 			ft_putendl_fd(path, 2);
 			exit(1);
 		}
