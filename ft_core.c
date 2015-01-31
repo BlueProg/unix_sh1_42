@@ -42,9 +42,9 @@ static char	*ft_find_path(char *cmd, char *path)
 	struct dirent	*dp;
 	int				i;
 
-	i = 0;
+	i = -1;
 	multipath = ft_strsplit(path, ':');
-	while (multipath[i])
+	while (multipath[++i])
 	{
 		dirp = opendir(multipath[i]);
 		if (dirp == NULL)
@@ -54,13 +54,13 @@ static char	*ft_find_path(char *cmd, char *path)
 			if (dp->d_namlen == ft_strlen(cmd)
 				&& ft_strcmp(dp->d_name, cmd) == 0)
 			{
-				(void)closedir(dirp);
+				closedir(dirp);
 				return (ft_strjoin(ft_strjoin(multipath[i], "/"), cmd));
 			}
 		}
-		(void)closedir(dirp);
-		i++;
+		closedir(dirp);
 	}
+	ft_putendl_fd("Command not found", 2);
 	return (cmd);
 }
 

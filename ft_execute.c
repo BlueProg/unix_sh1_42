@@ -37,6 +37,8 @@ void			ft_execute(char *path, char **argv)
 	pid_t		father;
 	extern char	**environ;
 
+	if (path == NULL)
+		ft_putendl_fd("Command not found", 2);
 	if (path && *path && ft_only_space(path))
 	{
 		father = fork();

@@ -6,7 +6,7 @@
 #    By: mmole <mmole@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/28 17:04:02 by mmole             #+#    #+#              #
-#    Updated: 2015/01/28 17:04:05 by mmole            ###   ########.fr        #
+#    Updated: 2015/01/31 17:29:20 by mmole            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ RM		=		rm -f
 
 FLAG	=		-Wall -Werror -Wextra -g
 
-all: libft.a $(NAME)
+all: libft/libft.a $(NAME)
 
 $(NAME): $(OBJ)
 		gcc $(FLAG) -o $(NAME) $(OBJ) -L. $(LIB)
@@ -33,7 +33,7 @@ $(NAME): $(OBJ)
 %.o:		%.c
 		gcc $(FLAG) -c $^ -o $@ -I $(INC)
 
-libft.a:
+libft/libft.a:
 		make -C libft/
 
 re:		fclean all

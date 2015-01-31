@@ -38,5 +38,5 @@ void	ft_build_unsetenv(t_env **list, char **argv)
 		prev = curr;
 		curr = curr->next;
 	}
-	ft_putendl_fd("Path env not found",2);
+	ft_putendl_fd("Path env not found", 2);
 }
