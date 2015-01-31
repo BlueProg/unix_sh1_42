@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "sh1.h"
-
-#include <stdio.h>
 #include <unistd.h>
 
 static void	ft_fix_pwd(t_env **list, char *path)
@@ -74,6 +72,15 @@ static char	*ft_back_pwd(t_env **list)
 	return ("");
 }
 
+static char *ft_tilde_path(t_env **list, char *argv)
+{
+	char *path;
+
+	path = ft_give_home(list);
+	path = ft_strjoin(path, ft_strsub(argv, 1, ft_strlen(argv)));
+	return (path);
+}
+
 void		ft_build_cd(char **argv, t_env **list)
 {
 	char	*path;
@@ -84,7 +91,12 @@ void		ft_build_cd(char **argv, t_env **list)
 	else if (ft_strcmp(argv[1], "-") == 0)
 		path = ft_back_pwd(list);
 	else
-		path = ft_strdup(argv[1]);
+	{
+		if (argv[1][0] == '~')
+			path = ft_tilde_path(list, argv[1]);
+		else
+			path = ft_strdup(argv[1]);
+	}
 	chdir(path);
 	path = ft_strdup(getcwd(buff, 256));
 	ft_fix_pwd(list, path);

@@ -28,7 +28,7 @@ void	ft_build_unsetenv(t_env **list, char **argv)
 	{
 		if (ft_strcmp(curr->name, argv[1]) == 0)
 		{
-			if (prevP == NULL)
+			if (prev == NULL)
 				*list = curr->next;
 			else
 				prev->next = curr->next;
@@ -39,4 +39,3 @@ void	ft_build_unsetenv(t_env **list, char **argv)
 		curr = curr->next;
 	}
 }
-

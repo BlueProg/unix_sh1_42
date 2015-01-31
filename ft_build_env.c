@@ -30,7 +30,7 @@ void	ft_print_env(t_env *list)
 	}
 }
 
-void		ft_build_env(t_env **list, char *cmd, char **argv)
+void	ft_build_env(t_env **list, char *cmd, char **argv)
 {
 	if (ft_strcmp(cmd, "env") == 0)
 		ft_print_env(*list);
