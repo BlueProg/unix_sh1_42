@@ -12,6 +12,7 @@
 
 #include "sh1.h"
 #include <stdlib.h>
+#include <signal.h>
 
 static void	ft_read_input(char **cmd)
 {
@@ -65,6 +66,7 @@ int			main(void)
 	ft_init_env(&list);
 	while (1)
 	{
+		signal(SIGINT, SIG_IGN);
 		ft_putstr("\033[33m");
 		ft_putstr(ft_getenv(&list, "PWD"));
 		ft_putstr(": ");

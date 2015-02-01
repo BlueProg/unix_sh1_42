@@ -46,12 +46,12 @@ static char		**ft_create_environ(t_env **list, int i)
 	tmp = *list;
 	if ((tab = (char **)malloc(sizeof(char *) * (i + 1))) == NULL)
 		return (NULL);
-	i = 0;
-	while (tmp)
+	i = -1;
+	while (tmp && ++i > -1)
 	{
 		if (tmp->name && tmp->data)
 		{
-			tab[i++] = ft_strjoin(ft_strdup(tmp->name), "=");
+			tab[i] = ft_strjoin(ft_strdup(tmp->name), "=");
 			tab[i] = ft_strjoin(tab[i], ft_strdup(tmp->data));
 		}
 		tmp = tmp->next;
