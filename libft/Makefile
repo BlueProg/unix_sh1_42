@@ -6,7 +6,7 @@
 #    By: mmole <mmole@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/19 15:21:33 by mmole             #+#    #+#              #
-#    Updated: 2015/01/28 16:58:19 by mmole            ###   ########.fr        #
+#    Updated: 2015/02/01 20:59:31 by mmole            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,13 @@ SRCS	=	ft_strlen.c ft_bzero.c ft_memset.c ft_memcpy.c \
 OBJS	= ${SRCS:.c=.o}
 FLAGS	= -Wall -Werror -Wextra -g
 
-all: $(NAME)
+all: includes/libft.h $(NAME)
 
-$(NAME): includes/libft.h
-		gcc $(FLAGS) -c $(SRCS) -I includes/
+$(NAME): $(OBJS)
 		ar rc $(NAME) $(OBJS)
+
+%.o:		%.c
+		gcc $(FLAGS) -c $^ -o $@ -I includes/ 
 
 clean:
 		rm -f $(OBJS)

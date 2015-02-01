@@ -28,7 +28,7 @@ t_env				*ft_envnew(char const *name, char const *data);
 void				ft_execute(char *path, char **argv, t_env **list);
 void				ft_search_and_execute(char *cmd, t_env **list);
 void				ft_build_setenv(t_env *list, char **argv);
-void				ft_build_unsetenv(t_env **list, char **argv);
+void				ft_build_unsetenv(t_env **list, char *argv);
 void				ft_build_env(t_env **list, char *cmd, char **argv);
 void				ft_build_cd(char **argv, t_env **list);
 char				*ft_getenv(t_env **list, const char *name);
